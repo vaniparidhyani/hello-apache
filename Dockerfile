@@ -13,6 +13,7 @@ RUN yum makecache fast \
       git \
       python \
       python-pip \
- && yum clean all
+ && yum clean all \
+ && pip install --upgrade pip \
  && pip install ansible
 
