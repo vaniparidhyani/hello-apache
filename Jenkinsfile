@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "vaniparidhyani/hello-apache"
+    registry = "vaniparidhyani/firstrepo"
     registryCredential = 'docker-hub-credentials'
   }
   agent any
