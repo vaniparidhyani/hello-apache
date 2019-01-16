@@ -1,0 +1,5 @@
+---
+- name: Apache Playbook
+  hosts: local
+  roles:
+    - { role: apache }
