@@ -32,7 +32,7 @@ ENV ANSIBLE_STDOUT_CALLBACK default
 #ENV ANSIBLE_REMOTE_USER wcmcmd
 ENV ANSIBLE_HASH_BEHAVIOUR merge
 ENV ANSIBLE_PRIVATE_KEY_FILE id_rsa
-ENV ANSIBLE_VAULT_PASSWORD_FILE /etc/ansible/.vault_pass
+#ENV ANSIBLE_VAULT_PASSWORD_FILE /etc/ansible/.vault_pass
 ENV ANSIBLE_BECOME true
 ENV ANSIBLE_PTY false
 ENV ANSIBLE_SSH_ARGS -C -o ControlMaster=auto -o ControlPersist=600s
@@ -57,6 +57,7 @@ ENV PROJECTID helloapache
 
 #RUN gittoken=`ansible-vault view /etc/ansible/git.yml --vault-password-file /etc/ansible/.vault_pass`
 RUN gittoken=`cat /etc/ansible/gittoken`
+RUN rm -rf /etc/ansible
 RUN git clone --branch $BRANCH --single-branch https://$gittoken@github.com/vaniparidhyani/hello-apache.git /etc/ansible/
 
 RUN mkdir /etc/ansible/facts.d
@@ -66,4 +67,4 @@ RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 EXPOSE 80
 
-ENTRYPOINT ["ansible-playbook -vv /etc/ansible/$PROJECTID.yml -i /etc/ansible/hosts"]
+#ENTRYPOINT ["ansible-playbook -vv /etc/ansible/$PROJECTID.yml -i /etc/ansible/hosts"]
