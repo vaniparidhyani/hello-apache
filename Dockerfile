@@ -67,4 +67,4 @@ RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 EXPOSE 80
 
-#ENTRYPOINT ["ansible-playbook -vv /etc/ansible/$PROJECTID.yml -i /etc/ansible/hosts"]
+ENTRYPOINT ["ansible-playbook -vv /etc/ansible/$PROJECTID.yml -i /etc/ansible/hosts"]
